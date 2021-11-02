@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import AllMeetupsPage from "./pages/AllMeetups";
+import FavoritesPage from "./pages/Favorites";
+import NewMeetupPage from "./pages/NewMeetup";
 
 function App() {
+  //localhost:3000
+  // /
+  // /favorites
+
+  //Switch picks ONE element to show
+  //without it any matching are selected so you can nest? pages
+
+  //set exact for if the path should match the given exactly
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Switch>
+        <Route path="/" exact={true}>
+          <AllMeetupsPage />
+        </Route>
+        <Route path="/new-meetup">
+          <NewMeetupPage />
+        </Route>
+        <Route path="/favorites">
+          <FavoritesPage />
+        </Route>
+      </Switch>
+    </Layout>
   );
 }
 
